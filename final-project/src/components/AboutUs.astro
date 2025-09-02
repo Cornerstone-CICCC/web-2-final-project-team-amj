@@ -1,0 +1,103 @@
+---
+import mobileImg from "../assets/about-img-mobile.png";
+import desktopImg from "../assets/about-img-desktop.png";
+---
+
+<div class="container" id="about-us">
+  <div class="top-container">
+    <p class="title">About Us</p>
+    <h2>Welcome to Ddsgnr clinic</h2>
+    <div class="text">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+      varius enim in eros elementum tristique. Duis cursus, mi quis viverra
+      ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat.Lorem
+      ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim
+      in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros
+      dolor interdum nulla, ut commodo diam libero vitae erat.
+    </div>
+    <div class="button"><a href="#contact">Book an Appointment</a></div>
+    
+  </div>
+
+  <div class="img-container">
+    <img src={mobileImg.src} alt="Doctor Image" class="mobile-img"/>
+    <img src={desktopImg.src} alt="Doctor Image" class="desktop-img" />
+  </div>
+</div>
+
+<style>
+  .container {
+    padding: 3rem 2rem;
+  }
+  .title {
+    font-size: 16px;
+    font-weight: 600;
+  }
+  h2 {
+    font-size: 32px;
+    font-weight: bold;
+  }
+  .text {
+    font-size: 18px;
+    padding-bottom: 2rem;
+  }
+  .button {
+    background-color: black;
+    border-radius: 10px;
+    padding: 0.5rem 0;
+    text-align: center;
+  }
+
+  .button a{
+    color: white;
+    text-decoration: none;
+  }
+
+  .img-container {
+    display: flex;
+    justify-content: center;
+    padding: 5rem 0;
+  }
+
+  .desktop-img{
+    display: none;
+  }
+
+  @media screen and (min-width: 800px) {
+    .container{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        padding: 0 3rem;
+        
+    }
+    h2{
+        font-size:48px;
+        margin: 1rem 0;
+    }
+
+    .top-container{
+        margin: auto 0;
+        padding: 0 2.5rem
+    }
+
+    .text{
+        line-height:1.5;
+    }
+    .mobile-img{
+        display: none;
+    }
+
+    .desktop-img{
+        display: block;
+        border-radius:50%;
+        width: 80%;
+    }
+
+    .button{
+        width: fit-content;
+        padding: 0.5rem 2rem;
+        border-radius:5px;
+    }
+
+  }
+</style>
