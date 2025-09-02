@@ -1,0 +1,169 @@
+<div class="healthcare">
+  <div class="healthcare-title">
+    <p>Tagline</p>
+    <p>Our Healthcare Departments</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+  </div>
+
+  <div class="healthcare-section">
+    <div class="first-section">
+      <div class="content">
+        <div><img src="/public/logo-cardiology.svg" alt=""></div>
+        <p>Cardiology</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim</p>
+        <p>Learn more <span><img src="/public/logo-right-arrow.png"></span></p>
+      </div>
+      <div class="content">
+        <div><img src="/public/logo-gynecology.svg" alt=""></div>
+        <p>Gynecology</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.</p>
+        <p>Learn more <span><img src="/public/logo-right-arrow.png"></span></p>
+      </div>
+      <div class="content">
+        <div><img src="/public/logo-gynecology.svg" alt=""></div>
+        <p>Gynecology</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim</p>
+        <p>Learn more <span><img src="/public/logo-right-arrow.png"></span></p>
+      </div>
+      <div class="content">
+        <div><img src="/public/logo-family-medicine.png" alt=""></div>
+        <p>Family Medicine</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim</p>
+        <p>Learn more <span><img src="/public/logo-right-arrow.png"></span></p>
+      </div>
+    </div>
+
+    <div class="second-section">
+      <div class="content">
+        <div><img src="/public/logo-family-medicine.png" alt=""></div>
+        <p>Family Medicine</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim</p>
+        <p>Learn more <span><img src="/public/logo-right-arrow.png"></span></p>
+      </div>
+      <div class="content">
+        <div><img src="/public/logo-gynecology.svg" alt=""></div>
+        <p>Gynecology</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim</p>
+        <p>Learn more <span><img src="/public/logo-right-arrow.png"></span></p>
+      </div>
+      <div class="content">
+        <div><img src="/public/logo-cardiology.svg" alt=""></div>
+        <p>Cardiology</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim</p>
+        <p>Learn more <span><img src="/public/logo-right-arrow.png"></span></p>
+      </div>
+      <div class="content">
+        <div><img src="/public/logo-gynecology.svg" alt=""></div>
+        <p>Gynecology</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim</p>
+        <p>Learn more <span><img src="/public/logo-right-arrow.png"></span></p>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <button>View More</button>
+  </div>
+</div>
+
+<style>
+
+  .healthcare{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 100px;
+
+  }
+
+  .healthcare-title{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+    padding: 40px;
+  }
+
+  .healthcare-title p:nth-child(2){
+    font-weight: 700;
+    font-size: 32px;
+    margin: 0;
+  }
+
+  .healthcare-section{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+
+    margin-bottom: 50px;
+  }
+
+  .first-section,
+  .second-section{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(247, 247, 247, 1);
+    max-width: 300px;
+    padding: 30px;
+    text-align: center;
+  }
+
+  .content > p:first-of-type{
+    font-weight: 600;
+    font-size: 20px;
+  }
+
+  button{
+    font-size: 16px;
+    font-weight: 400;
+    padding: 10px 20px;
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color: transparent;
+  }
+
+  @media screen and (min-width: 768px) {
+
+    .healthcare{
+      /* background-color: rgba(247,247,247,1); */
+      background-color: #eee;
+      padding-bottom: 30px;
+    }
+
+    .first-section,
+    .second-section{
+      flex-direction: row;
+    }
+
+    .first-section{
+      margin-bottom: 20px;
+    }
+    
+    .content{
+      background-color: white;
+    }
+
+    .healthcare-title p:nth-child(2){
+      font-size: 56px;
+    }
+
+    .healthcare-section{
+      margin: 20px 60px 80px;
+    }
+    
+    button{
+      margin-bottom: 60px;
+    }
+  }
+</style>
