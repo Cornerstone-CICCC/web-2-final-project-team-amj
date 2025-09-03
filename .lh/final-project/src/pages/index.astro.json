@@ -1,0 +1,18 @@
+{
+    "sourceFile": "final-project/src/pages/index.astro",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1756834561966,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1756834561966,
+            "name": "Commit-0",
+            "content": "---\r\nimport Layout from \"../layouts/Layout.astro\";\r\nimport Form from \"../components/Form.astro\";\r\n\r\n// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build\r\n// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.\r\n---\r\n\r\n<Layout>\r\n  <Form />\r\n</Layout>\r\n"
+        }
+    ]
+}

@@ -1,0 +1,174 @@
+---
+import img from "../assets/contact-us-img.svg";
+---
+
+<div class="container">
+  <div class="form-container">
+    <p class="tagline">Tagline</p>
+    <h2>Contact us</h2>
+    <div class="form-pretext">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    </div>
+
+    <form>
+      <div class="input-container">
+        <label for="fullname">Full name</label>
+        <input type="text" id="fullname" />
+      </div>
+
+      <div class="input-container">
+        <label for="email">Email</label>
+        <input type="text" id="email" />
+      </div>
+      <div class="input-container">
+        <label for="phone-number">Phone number</label>
+        <input type="number" id="phone-number" />
+      </div>
+      <div class="input-container">
+        <label for="birthday">Date of Birth</label>
+        <input type="date" id="birthday" />
+      </div>
+      <div class="input-container">
+        <label for="services">Select service</label>
+        <select name="services" id="services">
+          <option value="service1">Service 1</option>
+          <option value="service2">Service 2</option>
+          <option value="service3">Service 3</option>
+        </select>
+      </div>
+      <div class="input-container">
+        <label for="booking-time">Select time</label>
+        <input type="datetime-local" id="booking-time" />
+      </div>
+      <div class="input-container input-container-msg">
+        <label for="message">Message</label>
+        <textarea id="message" rows="6" placeholder="Type your message..."
+        ></textarea>
+      </div>
+
+      <div class="terms-check">
+        <input type="checkbox" />
+        <p>I accept the <a href="#" class="terms">Terms</a></p>
+      </div>
+    </form>
+
+    <button>Submit</button>
+  </div>
+
+  <div class="img-container">
+    <img src={img.src} alt="Doctor Image" />
+  </div>
+</div>
+
+<style>
+  .container {
+    background-color: #f4f4f4;
+    padding: 3rem 2rem;
+    display: flex;
+    flex-direction: column;
+  }
+  .form-container {
+    margin: 0 auto;
+  }
+
+  .tagline {
+    display: none;
+  }
+  h2 {
+    font-size: 40px;
+    text-align: center;
+  }
+  .form-pretext {
+    font-size: 18px;
+  }
+  form {
+    padding: 1.5rem 0;
+  }
+  .input-container {
+    display: flex;
+    gap: 0.3rem;
+    flex-direction: column;
+    padding-bottom: 1rem;
+  }
+  .terms-check {
+    display: flex;
+  }
+
+  .terms-check a {
+    color: black;
+  }
+  input,
+  select,
+  textarea {
+    font-size: 20px;
+    border-radius: 5px;
+    padding: 0.3rem;
+  }
+
+  textarea {
+    resize: none;
+  }
+
+  textarea::placeholder {
+    font-family: "Roboto", sans-serif;
+  }
+
+  button {
+    background-color: black;
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 10px;
+  }
+
+  .img-container {
+    display: none;
+  }
+
+  @media screen and (min-width: 800px) {
+    .container {
+      background-color: white;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin: 0 5rem;
+    }
+    .img-container {
+      display: block;
+      display: flex;
+      justify-content: center;
+      /* align-items: center; */
+    }
+
+    .input-container {
+      width: 90%;
+    }
+
+    .img-container img {
+      max-height: 85%;
+    }
+
+    h2 {
+      text-align: start;
+      margin: 1.5rem 0;
+    }
+
+    .tagline {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 0;
+    }
+
+    form {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.5rem;
+      padding-bottom: 0;
+    }
+    .input-container-msg {
+      grid-column: 1 / span 2;
+      padding-bottom: 0;
+      width: 95%;
+    }
+  }
+</style>
