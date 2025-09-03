@@ -33,7 +33,7 @@
       </div>
     </div>
 
-    <div class="second-section">
+    <div class="second-section more-content">
       <div class="content">
         <div><img src="/public/logo-family-medicine.png" alt=""></div>
         <p>Family Medicine</p>
@@ -62,7 +62,7 @@
   </div>
 
   <div>
-    <button>View More</button>
+    <button class="btn-view-more">View More</button>
   </div>
 </div>
 
@@ -108,6 +108,10 @@
     gap: 30px;
   }
 
+  .more-content{
+    display: none;
+  }
+
   .content{
     display: flex;
     flex-direction: column;
@@ -132,6 +136,8 @@
     border-radius: 5px;
     background-color: transparent;
   }
+
+
 
   @media screen and (min-width: 768px) {
 
@@ -165,5 +171,7 @@
     button{
       margin-bottom: 60px;
     }
+    
+    
   }
 </style>
