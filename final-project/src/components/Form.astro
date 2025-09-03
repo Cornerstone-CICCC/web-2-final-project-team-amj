@@ -10,27 +10,28 @@ import img from "../assets/contact-us-img.svg";
       Lorem ipsum dolor sit amet, consectetur adipiscing elit.
     </div>
 
-    <form>
+    <form id="form">
       <div class="input-container">
         <label for="fullname">Full name</label>
-        <input type="text" id="fullname" />
+        <input type="text" id="fullname" name="fullname" required />
       </div>
 
       <div class="input-container">
         <label for="email">Email</label>
-        <input type="text" id="email" />
+        <input type="text" id="email" name="email" required />
       </div>
       <div class="input-container">
         <label for="phone-number">Phone number</label>
-        <input type="number" id="phone-number" />
+        <input type="tel" id="phone-number" name="phone-number" required />
       </div>
       <div class="input-container">
         <label for="birthday">Date of Birth</label>
-        <input type="date" id="birthday" />
+        <input type="date" id="birthday" name="birthday" />
       </div>
       <div class="input-container">
         <label for="services">Select service</label>
-        <select name="services" id="services">
+        <select name="services" id="services" required>
+          <option value=""></option>
           <option value="service1">Service 1</option>
           <option value="service2">Service 2</option>
           <option value="service3">Service 3</option>
@@ -38,12 +39,21 @@ import img from "../assets/contact-us-img.svg";
       </div>
       <div class="input-container">
         <label for="booking-time">Select time</label>
-        <input type="datetime-local" id="booking-time" />
+        <input
+          type="datetime-local"
+          id="booking-time"
+          name="booking-time"
+          required
+        />
       </div>
       <div class="input-container input-container-msg">
         <label for="message">Message</label>
-        <textarea id="message" rows="6" placeholder="Type your message..."
-        ></textarea>
+        <textarea
+          name="message"
+          id="message"
+          rows="6"
+          placeholder="Type your message..."
+          required></textarea>
       </div>
 
       <div class="terms-check">
@@ -52,13 +62,28 @@ import img from "../assets/contact-us-img.svg";
       </div>
     </form>
 
-    <button>Submit</button>
+    <button class="submit-btn">Submit</button>
   </div>
 
   <div class="img-container">
     <img src={img.src} alt="Doctor Image" />
   </div>
 </div>
+
+<script>
+  const form = document.getElementById("form");
+  const submitter = document.querySelector(".submit-btn");
+
+  submitter.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(form);
+
+    for (const [key, val] of formData.entries()) {
+      console.log(key, val);
+    }
+  });
+</script>
 
 <style>
   .container {
@@ -103,6 +128,7 @@ import img from "../assets/contact-us-img.svg";
     font-size: 20px;
     border-radius: 5px;
     padding: 0.3rem;
+    border: 2px solid black;
   }
 
   textarea {
