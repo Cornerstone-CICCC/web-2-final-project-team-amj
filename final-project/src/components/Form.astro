@@ -1,5 +1,6 @@
 ---
 import img from "../assets/contact-us-img.svg";
+import Confirmation from "./Confirmation.astro";
 
 const now = new Date();
 const today = now.toLocaleDateString("en-CA");
@@ -86,6 +87,8 @@ const nextDay = tmrw.toLocaleDateString("en-CA");
   <div class="img-container">
     <img src={img.src} alt="Doctor Image" />
   </div>
+
+  <Confirmation />
 </div>
 
 <script>
@@ -102,6 +105,13 @@ const nextDay = tmrw.toLocaleDateString("en-CA");
     const formData = new FormData(form);
     let formInvalidate = false;
 
+    document
+      .querySelector(".modal-btn-wrapper")
+      ?.querySelector("button")
+      ?.click();
+
+    confirmationModal(formData);
+
     formInvalidate = validateInput(formData);
 
     if (!formInvalidate) {
@@ -114,12 +124,25 @@ const nextDay = tmrw.toLocaleDateString("en-CA");
         body: formData,
       })
         .then((res) => {
-          alert("your mail is sent!");
+          document
+            .querySelector(".modal-btn-wrapper")
+            ?.querySelector("button")
+            ?.click();
         })
         .catch((err) => console.log(err));
       form.reset();
     }
   });
+
+  function confirmationModal(formData) {
+    const modal = document.querySelector("#modal-id");
+
+    for (const key of formData.entries()) {
+      const elementClass = `.input-${key[0]}`;
+
+      modal.querySelector(elementClass).textContent = `${key[0]}: ${key[1]}`;
+    }
+  }
 
   function validateInput(formData) {
     const existingErr = document.querySelectorAll(".err-text");
