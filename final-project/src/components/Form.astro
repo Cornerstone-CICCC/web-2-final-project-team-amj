@@ -1,10 +1,23 @@
 ---
 import img from "../assets/contact-us-img.svg";
+
+const now = new Date();
+const today = now.toLocaleDateString("en-CA");
+
+const tmrw = new Date();
+tmrw.setDate(tmrw.getDate() + 1);
+
+const halfMonth = new Date();
+halfMonth.setDate(halfMonth.getDate() + 180);
+
+const halfMonthDay = halfMonth.toLocaleDateString("en-CA");
+const nextDay = tmrw.toLocaleDateString("en-CA");
 ---
 
-<div class="container">
+<div class="container" id="contact-us">
   <div class="form-container">
     <p class="tagline">Tagline</p>
+    <p class="tagline"></p>
     <h2>Contact us</h2>
     <div class="form-pretext">
       Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -14,6 +27,7 @@ import img from "../assets/contact-us-img.svg";
       <div class="input-container">
         <label for="fullname">Full name</label>
         <input type="text" id="fullname" name="fullname" required />
+        <!-- <div class="err-text">Please fill this section</div> -->
       </div>
 
       <div class="input-container">
@@ -26,7 +40,7 @@ import img from "../assets/contact-us-img.svg";
       </div>
       <div class="input-container">
         <label for="birthday">Date of Birth</label>
-        <input type="date" id="birthday" name="birthday" />
+        <input type="date" id="birthday" name="birthday" max={today} />
       </div>
       <div class="input-container">
         <label for="services">Select service</label>
@@ -43,6 +57,9 @@ import img from "../assets/contact-us-img.svg";
           type="datetime-local"
           id="booking-time"
           name="booking-time"
+          min={nextDay + "T09:00"}
+          max={halfMonthDay + "T09:00"}
+          step="1800"
           required
         />
       </div>
@@ -55,10 +72,11 @@ import img from "../assets/contact-us-img.svg";
           placeholder="Type your message..."
           required></textarea>
       </div>
-
-      <div class="terms-check">
-        <input type="checkbox" />
-        <p>I accept the <a href="#" class="terms">Terms</a></p>
+      <div>
+        <div class="terms-check">
+          <input type="checkbox" name="terms" id="terms" required />
+          <p>I accept the <a href="#" class="terms">Terms</a></p>
+        </div>
       </div>
     </form>
 
@@ -71,18 +89,117 @@ import img from "../assets/contact-us-img.svg";
 </div>
 
 <script>
-  const form = document.getElementById("form");
-  const submitter = document.querySelector(".submit-btn");
+  const SERVICE_ID = `${import.meta.env.PUBLIC_SERVICE_ID}`;
+  const TEMPLATE_ID = `${import.meta.env.PUBLIC_TEMPLATE_ID}`;
+  const PUBLIC_KEY = `${import.meta.env.PUBLIC_PUBLIC_KEY}`;
+
+  const form = document.getElementById("form") as HTMLFormElement;
+  const submitter = document.querySelector(".submit-btn") as HTMLButtonElement;
 
   submitter.addEventListener("click", (e) => {
     e.preventDefault();
 
     const formData = new FormData(form);
+    let formInvalidate = false;
 
-    for (const [key, val] of formData.entries()) {
-      console.log(key, val);
+    formInvalidate = validateInput(formData);
+
+    if (!formInvalidate) {
+      formData.append("service_id", SERVICE_ID);
+      formData.append("template_id", TEMPLATE_ID);
+      formData.append("user_id", PUBLIC_KEY);
+
+      fetch("https://api.emailjs.com/api/v1.0/email/send-form", {
+        method: "POST",
+        body: formData,
+      })
+        .then((res) => {
+          alert("your mail is sent!");
+        })
+        .catch((err) => console.log(err));
+      form.reset();
     }
   });
+
+  function validateInput(formData) {
+    const existingErr = document.querySelectorAll(".err-text");
+    if (existingErr) {
+      existingErr.forEach((element) => {
+        element.remove();
+      });
+    }
+
+    var falseCount = 0;
+
+    if (!formData.has("terms")) {
+      const errDiv = document.createElement("div");
+      errDiv.classList.add("err-text");
+      falseCount++;
+      errDiv.append("Please check to proceed");
+      document
+        .querySelector('input[name="terms"]')
+        .parentElement.parentElement.append(errDiv);
+    }
+
+    for (const key of formData.entries()) {
+      const errDiv = document.createElement("div");
+      errDiv.classList.add("err-text");
+
+      if (key[0] === "fullname" && key[1] === "") {
+        falseCount++;
+        errDiv.append("Please fill this section");
+        document
+          .querySelector('input[name="fullname"]')
+          .parentElement.append(errDiv);
+      }
+      if (key[0] === "email" && key[1] === "") {
+        falseCount++;
+        errDiv.append("Please fill this section");
+        document
+          .querySelector('input[name="email"]')
+          .parentElement.append(errDiv);
+      }
+
+      if (key[0] === "phone-number" && key[1] === "") {
+        falseCount++;
+        errDiv.append("Please fill this section");
+        document
+          .querySelector('input[name="phone-number"]')
+          .parentElement.append(errDiv);
+      }
+
+      if (key[0] === "birthday" && key[1] === "") {
+        falseCount++;
+        errDiv.append("Please fill this section");
+        document
+          .querySelector('input[name="birthday"]')
+          .parentElement.append(errDiv);
+      }
+      if (key[0] === "services" && key[1] === "") {
+        falseCount++;
+        errDiv.append("Please select one option");
+        document
+          .querySelector('select[name="services"]')
+          .parentElement.append(errDiv);
+      }
+      if (key[0] === "booking-time" && key[1] === "") {
+        falseCount++;
+        errDiv.append("Please select date and time");
+        document
+          .querySelector('input[name="booking-time"]')
+          .parentElement.append(errDiv);
+      }
+      if (key[0] === "message" && key[1] === "") {
+        falseCount++;
+        errDiv.append("Please select date and time");
+        document
+          .querySelector('textarea[name="message"]')
+          .parentElement.append(errDiv);
+      }
+    }
+
+    return falseCount > 0 ? true : false;
+  }
 </script>
 
 <style>
@@ -119,6 +236,10 @@ import img from "../assets/contact-us-img.svg";
     display: flex;
   }
 
+  .terms-check p {
+    margin: 0;
+  }
+
   .terms-check a {
     color: black;
   }
@@ -129,6 +250,15 @@ import img from "../assets/contact-us-img.svg";
     border-radius: 5px;
     padding: 0.3rem;
     border: 2px solid black;
+  }
+  .err-text {
+    color: red;
+    font-size: 13px;
+    font-weight: bold;
+  }
+
+  ::-webkit-input-placeholder {
+    color: white;
   }
 
   textarea {
@@ -145,19 +275,21 @@ import img from "../assets/contact-us-img.svg";
     border: none;
     padding: 0.8rem 1.5rem;
     border-radius: 10px;
+    cursor: pointer;
+    margin: 1rem 0;
   }
 
   .img-container {
     display: none;
   }
 
-  @media screen and (min-width: 800px) {
+  @media screen and (min-width: 768px) {
     .container {
       background-color: white;
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 1rem;
-      margin: 0 5rem;
+      padding: 6rem 5rem;
     }
     .img-container {
       display: block;
