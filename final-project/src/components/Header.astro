@@ -25,6 +25,7 @@ import searchIcon from '../assets/search-icon.png'
   <div class="lower-container">
     <i class="fa-solid fa-bars burger-menu"></i>
     <img src={brandLogo.src} alt="">
+
     <nav class="topnav" id="mpTopnav">
       <menu>
         <li>
@@ -42,6 +43,7 @@ import searchIcon from '../assets/search-icon.png'
         
       </menu>
     </nav>
+
     <button class="btn-book">Book an Appointment</button>
     <div class="search-icon">
       <img src={searchIcon.src} alt="">
@@ -49,34 +51,35 @@ import searchIcon from '../assets/search-icon.png'
 
   </div>
 
-  <div style="padding-left: 16px;">
-  </div>
-
-  
+  <div class="burger-menu-items">
+      <p>
+        <a href="/">Home</a>
+      </p>
+      <p>
+        <a href="/doctors">Doctors</a>
+      </p>
+      <p>
+        <a href="/deparments">Deparments</a>
+      </p>
+      <p>
+        <a href="/aboutus">About Us</a>
+      </p>
+    </div>
 
 </header>
 
 <style>
-  .upper-container{
+  .upper-container,
+  .topnav,
+  .btn-book,
+  .mid-line{
     display: none;
   }
-
-  .topnav{
-    display: none;
-  }
- 
-  .btn-book{
-    display: none;
-  }
-
 
   span{
     margin: 0 15px
   }
 
-  .mid-line{
-    display: none;
-  }
 
   .lower-container{
     display: flex;
@@ -90,13 +93,32 @@ import searchIcon from '../assets/search-icon.png'
     font-weight: 600;
   }
 
-  @media screen and (min-width: 768px) {
-    /* .topnav a:not(:first-child){display: none;}
-    .topnav a.icon{
-      float: right;
-      display: block;
-    } */
+  .burger-menu-items{
+    display: flex;
+    flex-direction: column;
+    display: none;
+    margin: 0;
+  }
 
+  .burger-menu-items.active{
+    display: block;
+  }
+
+  .burger-menu-items p{
+    padding: 20px 0 20px 30px;
+    border-bottom: 1px solid black;
+    margin: 0 20px;
+  }
+
+
+  .burger-menu-items a{
+    text-decoration: none;
+    color: black;
+    
+  }
+
+
+  @media screen and (min-width: 768px) {
     .upper-container{
       display: flex;
       justify-content: space-between;
@@ -134,10 +156,7 @@ import searchIcon from '../assets/search-icon.png'
       color: black;
     }
 
-    .burger-menu{
-      display: none;
-    }
-
+    .burger-menu,
     .search-icon{
       display: none;
     }
@@ -164,13 +183,9 @@ import searchIcon from '../assets/search-icon.png'
       margin-right: 2rem;
 
     }
+
+    .burger-menu-items.active{
+      display: none;
+    }
   }
 </style>
-
-<!-- <script>
-
-   function myFunction() {
-    const nav = document.getElementById("mpTopnav");
-    nav.classList.toggle("responsive");
-  }
-</script> -->
