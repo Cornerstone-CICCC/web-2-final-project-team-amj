@@ -1,0 +1,166 @@
+---
+import Img1 from "../assets/images/Image1.png"
+import Img2 from "../assets/images/Image2.png"
+import Img3 from "../assets/images/Image3.png"
+import Img4 from "../assets/images/Image4.png"
+import Img5 from "../assets/images/Image5.png"
+import Img6 from "../assets/images/Image6.png"
+---
+
+<div class="doctors">
+  <h2>Doctors</h2>
+  <div class="list">
+    <div class="list_1">
+      <ul>
+        <li><img src={Img1.src} alt="img1">
+        <h3 class="names">Dr.	Mazen	E.	Ganim</h3>
+        <p class="degrees">MBBS, MS, Mch Urology</p>
+        <p class="majors">Family Medicine</p>
+        </li>
+        <li><img src={Img2.src} alt="img2">
+        <h3 class="names">Dr.	Mazen	E.	Ganim</h3>
+        <p class="degrees">MBBS, MD, DM Rheumatology</p>
+        <p class="majors">Pathology</p>
+        </li>
+        <li><img src={Img3.src} alt="img3">
+        <h3 class="names">Dr.	Howard	D.	Axe</h3>
+        <p class="degrees">MBBS, MD Anesthesia</p>
+        <p class="majors">Obstetrics</p>
+        </li>
+      </ul>
+    </div>
+    <div class="list_2">
+      <ul>
+        <li><img src={Img4.src} alt="img4">
+        <h3 class="names">Dr. Mahsa Rezaei, MD</h3>
+        <p class="degrees">MBBS, MD, DM Cardiology</p>
+        <p class="majors">Emergency Medicine</p>
+        </li>
+        <li><img src={Img5.src} alt="img5">
+        <h3 class="names">Dr. Dilip Anmangandla, MD</h3>
+        <p class="degrees">MBBS, MS Gyne & Obs</p>
+        <p class="majors">Urology</p>
+        </li>
+        <li><img src={Img6.src} alt="img6">
+        <h3 class="names">Dr. Marion Carson, MD</h3>
+        <p class="degrees">MBBS, MS, Mch Neurosurgery</p>
+        <p class="majors">Neurology</p>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<style>
+
+  h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    margin: 0;
+    padding: 3rem 0 1.5rem;
+  }
+
+  .list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+  }
+
+  h3, p {
+    text-align: center;
+    margin-bottom: 0.5rem;
+  }
+
+  .names {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+
+  .degrees {
+    font-size: 1.125rem;
+  }
+
+  .majors {
+    font-size: 0.875rem;
+  }
+
+  li {
+    list-style: none;
+    margin-bottom: 3rem;
+  }
+
+  img {
+    width: 15.625rem;
+    height: 15.625rem;
+  }
+
+  .list .list_2 {
+    display: none;
+  }
+
+
+@media screen and (min-width: 768px) {
+  
+    h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    margin: 0;
+    padding: 3rem 0 1.5rem;
+  }
+
+  .list {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 4.5rem;
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+  }
+
+  h3, p {
+    text-align: center;
+    margin-bottom: 0.5rem;
+  }
+
+  .names {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+
+  .degrees {
+    font-size: 1.125rem;
+  }
+
+  .majors {
+    font-size: 0.875rem;
+  }
+
+  li {
+    list-style: none;
+    margin-bottom: 3rem;
+  }
+
+  img {
+    width: 15.625rem;
+    height: 15.625rem;
+  }
+
+  .list .list_2 {
+    display: inline;
+  }
+
+}
+
+</style>
