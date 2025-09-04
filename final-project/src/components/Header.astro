@@ -1,0 +1,191 @@
+---
+// import { Image } from "astro:assets"
+import brandLogo from "../assets/logo-dsgnr.png"
+import searchIcon from '../assets/search-icon.png'
+---
+
+<header>
+  <div class="upper-container">
+    <div class="header-info">
+      <p style="font-size: 16px; font-weight: 600;">For emergency cases: 567 123 45 67 <span>|</span></p>
+      <p style="font-size: 14px; font-weight: 400;">Location:121 Wallstreet Street, NY , USA <span>|</span> </p>
+      <p style="font-size: 14px; font-weight: 400;">Open hours: 9.00-24.00 Mon-Sat <span>|</span></p>
+      <p style="font-size: 14px; font-weight: 400;">Email:info@Ddsgnr.com </p>
+    </div>
+    <div class="icon-container">
+      <i class="fa-brands fa-facebook-f"></i>
+      <i class="fa-brands fa-instagram"></i>
+      <i class="fa-brands fa-twitter"></i>
+      <i class="fa-brands fa-linkedin"></i>
+    </div>
+  </div>
+
+  <hr class="mid-line">
+
+  <div class="lower-container">
+    <i class="fa-solid fa-bars burger-menu"></i>
+    <img src={brandLogo.src} alt="">
+
+    <nav class="topnav" id="mpTopnav">
+      <menu>
+        <li>
+          <a href="/">Home</a>
+        </li>
+        <li>
+          <a href="/doctors">Doctors</a>
+        </li>
+        <li>
+          <a href="/deparments">Deparments</a>
+        </li>
+        <li>
+          <a href="/aboutus">About Us</a>
+        </li>
+        
+      </menu>
+    </nav>
+
+    <button class="btn-book">Book an Appointment</button>
+    <div class="search-icon">
+      <img src={searchIcon.src} alt="">
+    </div>
+
+  </div>
+
+  <div class="burger-menu-items">
+      <p>
+        <a href="/">Home</a>
+      </p>
+      <p>
+        <a href="/doctors">Doctors</a>
+      </p>
+      <p>
+        <a href="/deparments">Deparments</a>
+      </p>
+      <p>
+        <a href="/aboutus">About Us</a>
+      </p>
+    </div>
+
+</header>
+
+<style>
+  .upper-container,
+  .topnav,
+  .btn-book,
+  .mid-line{
+    display: none;
+  }
+
+  span{
+    margin: 0 15px
+  }
+
+
+  .lower-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 1.5rem;
+  }
+
+  .burger-menu{
+    font-size: 25px;
+    font-weight: 600;
+  }
+
+  .burger-menu-items{
+    display: flex;
+    flex-direction: column;
+    display: none;
+    margin: 0;
+  }
+
+  .burger-menu-items.active{
+    display: block;
+  }
+
+  .burger-menu-items p{
+    padding: 20px 0 20px 30px;
+    border-bottom: 1px solid black;
+    margin: 0 20px;
+  }
+
+
+  .burger-menu-items a{
+    text-decoration: none;
+    color: black;
+    
+  }
+
+
+  @media screen and (min-width: 768px) {
+    .upper-container{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.5rem 3rem;
+    }
+
+    .header-info{
+      display: flex;
+      align-items: center;
+    }
+
+    .icon-container{
+      display: flex;
+      gap: 10px;
+    }
+
+    .topnav{
+      display: block;
+    }
+
+    menu{
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      gap: 2rem;
+
+      font-size: 16px;
+      font-weight: 400;
+    }
+
+    a{
+      text-decoration: none;
+      color: black;
+    }
+
+    .burger-menu,
+    .search-icon{
+      display: none;
+    }
+
+    .btn-book{
+      display: block;
+      font-weight: 400;
+      font-size: 16px;
+      padding: 10px 18px;
+      border-radius: 7px;
+      border: none;
+      background-color: black;
+      color: white;
+    }
+
+    .mid-line{
+      display: block;
+      margin: 0 1.5rem;
+      background-color: black;
+    }
+
+    .lower-container{
+      margin-left: 2rem;
+      margin-right: 2rem;
+
+    }
+
+    .burger-menu-items.active{
+      display: none;
+    }
+  }
+</style>
