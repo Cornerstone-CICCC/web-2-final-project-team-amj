@@ -105,13 +105,6 @@ const nextDay = tmrw.toLocaleDateString("en-CA");
     const formData = new FormData(form);
     let formInvalidate = false;
 
-    document
-      .querySelector(".modal-btn-wrapper")
-      ?.querySelector("button")
-      ?.click();
-
-    confirmationModal(formData);
-
     formInvalidate = validateInput(formData);
 
     if (!formInvalidate) {
@@ -128,6 +121,8 @@ const nextDay = tmrw.toLocaleDateString("en-CA");
             .querySelector(".modal-btn-wrapper")
             ?.querySelector("button")
             ?.click();
+            confirmationModal(formData)
+
         })
         .catch((err) => console.log(err));
       form.reset();
