@@ -1,0 +1,388 @@
+---
+import Logo from "../assets/images/logo.png"
+---
+
+<footer>
+  <div class="container_Ddsgnr">
+
+    <div class="footer_box">
+      <div class="left_box">
+        <div class="logo">
+          <img src={Logo.src} alt="logo">
+          <h2>Ddsgnr</h2>      
+        </div>
+        <div class="subscribe_box">
+            <p>Join our newsletter to stay up to date on features and releases.</p>
+            <input type="email" placeholder="Enter your emnail">
+            <button>Subscribe</button>
+            <p>By subscribing you agree to with our <span>Privacy Policy</span> and provide consent to receive updates from our company.</p>
+        </div>
+      </div>
+
+      <div class="right_box">
+        <div class="linkTo">
+          <div class="about">
+            <a href="#">About Us</a>
+            <ul class="about_li">
+              <li>Home</li>
+              <li>Doctors</li>
+              <li>Categories</li>
+              <li>Contact</li>
+            </ul>
+          </div>
+          <div class="category">
+            <a href="#">Category</a>
+            <ul class="category_li">
+              <li>Neurology</li>
+              <li>Surgery</li>
+              <li>Defibrillators</li>
+              <li>Diagnostic</li>
+              <li>Anesthesia</li>
+              <li>Pumps</li>
+            </ul>
+          </div>
+          <a href="#" class="FU">Follow Us</a>
+
+          <div class="follow_tablet">
+            <a href="#">Follow Us</a>
+            <div class="sns">
+              <ul class="follow_li">
+                <li>
+                  <i class="fa-brands fa-facebook-f"></i>
+                  <p class="sns_name">Facebook</p>
+                </li>
+                <li>
+                  <i class="fa-brands fa-instagram"></i>
+                  <p class="sns_name">Instagram</p>
+                </li>
+                <li>
+                  <i class="fa-brands fa-twitter"></i>
+                  <p class="sns_name">Twitter</p>
+                </li>
+                <li>
+                  <i class="fa-brands fa-linkedin"></i>
+                  <p class="sns_name">Linkedin</p>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="follow_mobile">
+      <div class="sns">
+        <ul class="follow_li">
+          <li>
+            <i class="fa-brands fa-facebook-f"></i>
+            <p class="sns_name">Facebook</p>
+          </li>
+          <li>
+            <i class="fa-brands fa-instagram"></i>
+            <p class="sns_name">Instagram</p>
+          </li>
+          <li>
+            <i class="fa-brands fa-twitter"></i>
+            <p class="sns_name">Twitter</p>
+          </li>
+          <li>
+            <i class="fa-brands fa-linkedin"></i>
+            <p class="sns_name">Linkedin</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="copyright_box">
+      <div class="copyright">
+        <p>2023 Ddsgnr. All right reserved.</p>
+      </div>
+      <div class="copyright_links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Cookies Settings</a>
+      </div>
+    </div>
+
+
+
+  </div>
+</footer>
+
+<style>
+  .logo {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.567rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .logo img {
+    width: 2.036rem;
+    height: 1.899rem;
+    margin-left: 1.5rem;
+  }
+
+  .subscribe_box {
+    display: none;
+  }
+  
+  .linkTo .about_li, .linkTo .category_li {
+    display: none;
+  }
+
+  .linkTo {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  .linkTo a {
+    text-decoration: none;
+    color: #000;
+    font-size: 1rem;
+    padding-right: 2rem;
+  }
+
+  .linkTo a:first-child {
+    margin-left: 1.5rem;
+  }
+
+  .sns {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  .sns ul {
+    margin: 2rem 0;
+  }
+
+  .follow_li {
+    display: flex;
+    flex-direction: row;
+    text-decoration: none;
+    list-style: none;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  .follow_li i {
+    font-size: 1.5rem;
+    margin-right: 1.5rem;
+  }
+
+  .follow_li .sns_name {
+    display: none;
+  }
+
+  .sns_name {
+    display: none;
+  }
+
+  .follow_tablet {
+    display: none;
+  }
+
+  .copyright_box {
+    border-top: 1px solid #000;
+    margin: 0 1.5rem;
+  }
+
+  .copyright p {
+    font-size: 0.875rem;
+    margin: 2rem 0 1.5rem;
+  }
+
+  .copyright_links a {
+    display: inline-block;
+    color: #000;
+    font-size: .875rem;
+    padding-right: 1.5rem;
+    padding-bottom: 3rem;
+  }
+
+  @media screen and (min-width: 768px) {
+    .footer_box {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      margin: 5rem 4rem;
+
+    }
+
+    .left_box {
+      
+    }
+
+    .right_box {
+
+    }
+
+    .logo {
+      font-family: 'Inter', sans-serif;
+      font-size: 1.567rem;
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .logo img {
+      width: 2.036rem;
+      height: 1.899rem;
+      margin-left: 1.5rem;
+    }
+
+    .subscribe_box {
+      display: block;
+      margin-left: 1.5rem;
+      font-size: 1rem;
+    }
+
+    .subscribe_box input {
+      width: 22.813rem;
+      height: 3rem;
+      border: 1px solid #000;
+      border-radius: .5rem;
+      margin-right: 1rem;
+    }
+
+    .subscribe_box p:last-child {
+      font-size: .75rem;
+    }
+
+    .subscribe_box button {
+      width: 7.438rem;
+      height: 3rem;
+      border-radius: .5rem;
+      background-color: #fff;
+    }
+
+    .subscribe_box span {
+      text-decoration: underline;
+    }
+
+    .linkTo {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: flex-start;
+    }
+
+    .linkTo .about_li, .linkTo .category_li {
+      display: block;
+      list-style: none;
+      text-decoration: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .linkTo a {
+      display: inline-block;
+      width: 12.583rem;
+      height: 2rem;
+      text-align: left;
+      text-decoration: none;
+      color: #000;
+      font-size: 1rem;
+      font-weight: bold;
+      padding-right: 2rem;
+    }
+
+    .linkTo a:first-child {
+      margin: 0;
+    }
+
+    .right_box .linkTo .about .about_li, .right_box .linkTo .category .category_li, .sns .follow_li {
+      display: block;
+      margin: 0;
+      padding: 0;
+    }
+
+    .right_box .linkTo .about .about_li li, .right_box .linkTo .category .category_li li, .sns .follow_li li {
+      margin: 0.875rem auto;
+    }
+
+
+    .linkTo .FU {
+      display: none;
+    }
+
+    .follow_mobile {
+      display: none;
+    }
+
+    .follow_tablet {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .follow_li {
+      display: flex;
+      flex-direction: row;
+      text-decoration: none;
+      list-style: none;
+      justify-content: flex-start;
+      align-items: center;
+    }
+
+    .follow_li i {
+      font-size: 1.5rem;
+      margin-right: 1.5rem;
+    }
+
+    .follow_li .sns_name {
+      display: inline-block;
+    }
+
+    .sns {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: center;
+    }
+
+    .sns ul {
+      margin: 2rem 0;
+    }
+
+    .sns_name {
+      display: inline-block;
+    }
+
+    .copyright_box {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid #000;
+    }
+
+    .copyright {
+      margin: 0;
+      padding: 0;
+    }
+
+    .copyright p {
+      font-size: 0.875rem;
+      margin-top: 2rem;
+    }
+
+    .copyright_links a {
+      display: inline-block;
+      color: #000;
+      font-size: .875rem;
+      padding-right: 1.5rem;
+      padding-bottom: 3rem;
+      margin-top: 2rem;
+    }
+
+  }
+</style>
