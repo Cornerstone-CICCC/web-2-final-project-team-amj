@@ -121,8 +121,7 @@ const nextDay = tmrw.toLocaleDateString("en-CA");
             .querySelector(".modal-btn-wrapper")
             ?.querySelector("button")
             ?.click();
-            confirmationModal(formData)
-
+            confirmationModal(formData);
         })
         .catch((err) => console.log(err));
       form.reset();
@@ -135,7 +134,13 @@ const nextDay = tmrw.toLocaleDateString("en-CA");
     for (const key of formData.entries()) {
       const elementClass = `.input-${key[0]}`;
 
-      modal.querySelector(elementClass).textContent = `${key[0]}: ${key[1]}`;
+      if (key[0] === "booking-time") {
+        modal.querySelector(elementClass).innerHTML =
+          `<b>${key[0].toUpperCase()}:</b>  ${key[1].replace("T", " ")}`;
+      } else {
+        modal.querySelector(elementClass).innerHTML =
+          `<b>${key[0].toUpperCase()}:</b>  ${key[1]}`;
+      }
     }
   }
 
@@ -163,36 +168,40 @@ const nextDay = tmrw.toLocaleDateString("en-CA");
       const errDiv = document.createElement("div");
       errDiv.classList.add("err-text");
 
-      if (key[0] === "fullname" && key[1] === "") {
+      if (
+        (key[0] === "fullname" ||
+          key[0] === "email" ||
+          key[0] === "phone-number" ||
+          key[0] === "birthday" ||
+          key[0] === "booking-time") &&
+        key[1] === ""
+      ) {
         falseCount++;
         errDiv.append("Please fill this section");
         document
-          .querySelector('input[name="fullname"]')
-          .parentElement.append(errDiv);
-      }
-      if (key[0] === "email" && key[1] === "") {
-        falseCount++;
-        errDiv.append("Please fill this section");
-        document
-          .querySelector('input[name="email"]')
-          .parentElement.append(errDiv);
-      }
-
-      if (key[0] === "phone-number" && key[1] === "") {
-        falseCount++;
-        errDiv.append("Please fill this section");
-        document
-          .querySelector('input[name="phone-number"]')
+          .querySelector(`input[name="${key[0]}"]`)
           .parentElement.append(errDiv);
       }
 
-      if (key[0] === "birthday" && key[1] === "") {
-        falseCount++;
-        errDiv.append("Please fill this section");
-        document
-          .querySelector('input[name="birthday"]')
-          .parentElement.append(errDiv);
+      if (key[0] === "booking-time" && key[1] !== "") {
+        const date = new Date(key[1]);
+        const wod = date.getDay();
+        const hours = date.getHours();
+
+        const validDay = wod >= 1 && wod <= 6;
+        const validTime = hours >= 9 && hours < 24;
+
+        if (!validDay || !validTime) {
+          falseCount++;
+          errDiv.append(
+            "Please choose between Monday and Saturday from 9:00 to 24:00"
+          );
+          document
+            .querySelector(`input[name=${key[0]}]`)
+            .parentElement.append(errDiv);
+        }
       }
+
       if (key[0] === "services" && key[1] === "") {
         falseCount++;
         errDiv.append("Please select one option");
@@ -200,16 +209,10 @@ const nextDay = tmrw.toLocaleDateString("en-CA");
           .querySelector('select[name="services"]')
           .parentElement.append(errDiv);
       }
-      if (key[0] === "booking-time" && key[1] === "") {
-        falseCount++;
-        errDiv.append("Please select date and time");
-        document
-          .querySelector('input[name="booking-time"]')
-          .parentElement.append(errDiv);
-      }
+
       if (key[0] === "message" && key[1] === "") {
         falseCount++;
-        errDiv.append("Please select date and time");
+        errDiv.append("Please fill this section");
         document
           .querySelector('textarea[name="message"]')
           .parentElement.append(errDiv);
