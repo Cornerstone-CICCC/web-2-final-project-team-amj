@@ -1,0 +1,353 @@
+---
+import img from "../assets/contact-us-img.svg";
+import Confirmation from "./Confirmation.astro";
+
+const now = new Date();
+const today = now.toLocaleDateString("en-CA");
+
+const tmrw = new Date();
+tmrw.setDate(tmrw.getDate() + 1);
+
+const halfMonth = new Date();
+halfMonth.setDate(halfMonth.getDate() + 180);
+
+const halfMonthDay = halfMonth.toLocaleDateString("en-CA");
+const nextDay = tmrw.toLocaleDateString("en-CA");
+---
+
+<div class="container" id="contact-us">
+  <div class="form-container">
+    <p class="tagline">Tagline</p>
+    <p class="tagline"></p>
+    <h2>Contact us</h2>
+    <div class="form-pretext">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    </div>
+
+    <form id="form">
+      <div class="input-container">
+        <label for="fullname">Full name</label>
+        <input type="text" id="fullname" name="fullname" required />
+        <!-- <div class="err-text">Please fill this section</div> -->
+      </div>
+
+      <div class="input-container">
+        <label for="email">Email</label>
+        <input type="text" id="email" name="email" required />
+      </div>
+      <div class="input-container">
+        <label for="phone-number">Phone number</label>
+        <input type="tel" id="phone-number" name="phone-number" required />
+      </div>
+      <div class="input-container">
+        <label for="birthday">Date of Birth</label>
+        <input type="date" id="birthday" name="birthday" max={today} />
+      </div>
+      <div class="input-container">
+        <label for="services">Select service</label>
+        <select name="services" id="services" required>
+          <option value=""></option>
+          <option value="service1">Service 1</option>
+          <option value="service2">Service 2</option>
+          <option value="service3">Service 3</option>
+        </select>
+      </div>
+      <div class="input-container">
+        <label for="booking-time">Select time</label>
+        <input
+          type="datetime-local"
+          id="booking-time"
+          name="booking-time"
+          min={nextDay + "T09:00"}
+          max={halfMonthDay + "T09:00"}
+          step="1800"
+          required
+        />
+      </div>
+      <div class="input-container input-container-msg">
+        <label for="message">Message</label>
+        <textarea
+          name="message"
+          id="message"
+          rows="6"
+          placeholder="Type your message..."
+          required></textarea>
+      </div>
+      <div>
+        <div class="terms-check">
+          <input type="checkbox" name="terms" id="terms" required />
+          <p>I accept the <a href="#" class="terms">Terms</a></p>
+        </div>
+      </div>
+    </form>
+
+    <button class="submit-btn">Submit</button>
+  </div>
+
+  <div class="img-container">
+    <img src={img.src} alt="Doctor Image" />
+  </div>
+
+  <Confirmation />
+</div>
+
+<script>
+  const SERVICE_ID = `${import.meta.env.PUBLIC_SERVICE_ID}`;
+  const TEMPLATE_ID = `${import.meta.env.PUBLIC_TEMPLATE_ID}`;
+  const PUBLIC_KEY = `${import.meta.env.PUBLIC_PUBLIC_KEY}`;
+
+  const form = document.getElementById("form") as HTMLFormElement;
+  const submitter = document.querySelector(".submit-btn") as HTMLButtonElement;
+
+  submitter.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(form);
+    let formInvalidate = false;
+
+    formInvalidate = validateInput(formData);
+
+    if (!formInvalidate) {
+      formData.append("service_id", SERVICE_ID);
+      formData.append("template_id", TEMPLATE_ID);
+      formData.append("user_id", PUBLIC_KEY);
+
+      fetch("https://api.emailjs.com/api/v1.0/email/send-form", {
+        method: "POST",
+        body: formData,
+      })
+        .then((res) => {
+          document
+            .querySelector(".modal-btn-wrapper")
+            ?.querySelector("button")
+            ?.click();
+            confirmationModal(formData);
+        })
+        .catch((err) => console.log(err));
+      form.reset();
+    }
+  });
+
+  function confirmationModal(formData) {
+    const modal = document.querySelector("#modal-id");
+
+    for (const key of formData.entries()) {
+      const elementClass = `.input-${key[0]}`;
+
+      if (key[0] === "booking-time") {
+        modal.querySelector(elementClass).innerHTML =
+          `<b>${key[0].toUpperCase()}:</b>  ${key[1].replace("T", " ")}`;
+      } else {
+        modal.querySelector(elementClass).innerHTML =
+          `<b>${key[0].toUpperCase()}:</b>  ${key[1]}`;
+      }
+    }
+  }
+
+  function validateInput(formData) {
+    const existingErr = document.querySelectorAll(".err-text");
+    if (existingErr) {
+      existingErr.forEach((element) => {
+        element.remove();
+      });
+    }
+
+    var falseCount = 0;
+
+    if (!formData.has("terms")) {
+      const errDiv = document.createElement("div");
+      errDiv.classList.add("err-text");
+      falseCount++;
+      errDiv.append("Please check to proceed");
+      document
+        .querySelector('input[name="terms"]')
+        .parentElement.parentElement.append(errDiv);
+    }
+
+    for (const key of formData.entries()) {
+      const errDiv = document.createElement("div");
+      errDiv.classList.add("err-text");
+
+      if (
+        (key[0] === "fullname" ||
+          key[0] === "email" ||
+          key[0] === "phone-number" ||
+          key[0] === "birthday" ||
+          key[0] === "booking-time") &&
+        key[1] === ""
+      ) {
+        falseCount++;
+        errDiv.append("Please fill this section");
+        document
+          .querySelector(`input[name="${key[0]}"]`)
+          .parentElement.append(errDiv);
+      }
+
+      if (key[0] === "booking-time" && key[1] !== "") {
+        const date = new Date(key[1]);
+        const wod = date.getDay();
+        const hours = date.getHours();
+
+        const validDay = wod >= 1 && wod <= 6;
+        const validTime = hours >= 9 && hours < 24;
+
+        if (!validDay || !validTime) {
+          falseCount++;
+          errDiv.append(
+            "Please choose between Monday and Saturday from 9:00 to 24:00"
+          );
+          document
+            .querySelector(`input[name=${key[0]}]`)
+            .parentElement.append(errDiv);
+        }
+      }
+
+      if (key[0] === "services" && key[1] === "") {
+        falseCount++;
+        errDiv.append("Please select one option");
+        document
+          .querySelector('select[name="services"]')
+          .parentElement.append(errDiv);
+      }
+
+      if (key[0] === "message" && key[1] === "") {
+        falseCount++;
+        errDiv.append("Please fill this section");
+        document
+          .querySelector('textarea[name="message"]')
+          .parentElement.append(errDiv);
+      }
+    }
+
+    return falseCount > 0 ? true : false;
+  }
+</script>
+
+<style>
+  .container {
+    background-color: #f4f4f4;
+    padding: 3rem 2rem;
+    display: flex;
+    flex-direction: column;
+  }
+  .form-container {
+    margin: 0 auto;
+  }
+
+  .tagline {
+    display: none;
+  }
+  h2 {
+    font-size: 40px;
+    text-align: center;
+  }
+  .form-pretext {
+    font-size: 18px;
+  }
+  form {
+    padding: 1.5rem 0;
+  }
+  .input-container {
+    display: flex;
+    gap: 0.3rem;
+    flex-direction: column;
+    padding-bottom: 1rem;
+  }
+  .terms-check {
+    display: flex;
+  }
+
+  .terms-check p {
+    margin: 0;
+  }
+
+  .terms-check a {
+    color: black;
+  }
+  input,
+  select,
+  textarea {
+    font-size: 20px;
+    border-radius: 5px;
+    padding: 0.3rem;
+    border: 2px solid black;
+  }
+  .err-text {
+    color: red;
+    font-size: 13px;
+    font-weight: bold;
+  }
+
+  ::-webkit-input-placeholder {
+    color: white;
+  }
+
+  textarea {
+    resize: none;
+  }
+
+  textarea::placeholder {
+    font-family: "Roboto", sans-serif;
+  }
+
+  button {
+    background-color: black;
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 10px;
+    cursor: pointer;
+    margin: 1rem 0;
+  }
+
+  .img-container {
+    display: none;
+  }
+
+  @media screen and (min-width: 768px) {
+    .container {
+      background-color: white;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      padding: 6rem 5rem;
+    }
+    .img-container {
+      display: block;
+      display: flex;
+      justify-content: center;
+      /* align-items: center; */
+    }
+
+    .input-container {
+      width: 90%;
+    }
+
+    .img-container img {
+      max-height: 85%;
+    }
+
+    h2 {
+      text-align: start;
+      margin: 1.5rem 0;
+    }
+
+    .tagline {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 0;
+    }
+
+    form {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.5rem;
+      padding-bottom: 0;
+    }
+    .input-container-msg {
+      grid-column: 1 / span 2;
+      padding-bottom: 0;
+      width: 95%;
+    }
+  }
+</style>
