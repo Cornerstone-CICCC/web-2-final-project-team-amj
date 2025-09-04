@@ -1,0 +1,87 @@
+---
+
+---
+
+<div class="whole-container">
+  <div class="container">
+    <div class="top-text">
+      <h2>How we can help...</h2>
+      <div class="text">
+        We offer a wide range of procedures to help you get the perfect smile.
+        <br />
+        <a href="#"></a>
+      </div>
+    </div>
+
+    <div class="bottom-box">
+      <div class="btn-container"><a href="#">Book an Appointment</a></div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .whole-container {
+    padding: 4rem 2rem;
+  }
+
+  .container {
+    border: 1px solid black;
+    padding: 1rem;
+  }
+
+  .text {
+    line-height: 150%;
+  }
+
+  .text a::after {
+    content: "Request a quote";
+  }
+
+  .text a {
+    color: black;
+  }
+
+  .btn-container {
+    background-color: black;
+    width: fit-content;
+    padding: 0.8rem 1.5rem;
+    margin: 1rem 0;
+    border-radius: 5px;
+  }
+
+  .btn-container a {
+    text-decoration: none;
+    color: white;
+  }
+
+  @media screen and (min-width: 768px) {
+    .whole-container {
+      background-color: #f4f4f4;
+      padding: 3rem 2rem;
+    }
+    .container {
+      display: flex;
+      justify-content: space-between;
+      padding: 2rem 3rem;
+      border: 2px solid black;
+    }
+
+    .text a::after {
+      content: "Book an Appointment";
+    }
+
+    .top-text h2 {
+      margin-top: 0.5rem;
+      margin-bottom: 1rem;
+      font-size: 40px;
+    }
+
+    .text {
+      font-size: 18px;
+    }
+
+    .bottom-box {
+      margin: auto 0;
+    }
+  }
+</style>

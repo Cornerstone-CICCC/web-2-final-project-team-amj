@@ -1,0 +1,167 @@
+<div class="why-choose-us">
+  <div class="title-section">
+    <h3>Why choose us</p>
+    <h1>Why choose Ddsgnr clinic?</h1>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat.</p>
+  </div>
+
+  <div class="main-content">
+    <div class="info">
+      <div>
+        <h3>Easy booking</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros.</p>
+      </div>
+
+      <div>
+        <h3>Experience</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros.</p>
+      </div>
+    </div>
+
+    <div class="doctor-img">
+      <img src="/public/why-choose-img.png"  alt="">
+    </div>
+
+    <div class="info">
+      <div>
+        <h3>Flexible schedule</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros.</p>
+      </div>
+
+      <div>
+        <h3>Best price guarantee</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="btn-container">
+    <button class="btn-book">Book an Appointment</button>
+    <p>Learn more <span><img src="/public/right-arrow-chooseus.png" alt=""></span></p>
+  </div>
+</div>
+
+<style>
+
+  .why-choose-us p{
+    line-height: 25px;
+  }
+
+  .why-choose-us{
+    padding:0 0 100px;
+  }
+
+  .title-section{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 50px 0;
+    padding: 0 30px;
+  }
+
+  .title-section h3{
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  .title-section {
+    font-size: 18px;
+    font-weight: 400;
+  }
+
+  h1{
+    margin: 0;
+  }
+
+  .main-content{
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+  }
+
+  .info{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-self: center;
+    text-align: center;
+
+    max-width: 200px;
+    margin: auto;
+  }
+
+  .info h3{
+    font-weight: 700;
+    font-size: 24px;
+  }
+
+  .info p{
+    font-weight: 400;
+    font-size: 16px;
+  }
+
+  .doctor-img{
+    display: none;
+  }
+
+  .btn-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+
+    font-size: 16px;
+    font-weight: 400;
+
+    margin-top: 50px;
+  }
+
+  .btn-book{
+    padding: 15px 20px;
+    border-radius: 10px;
+    border-style: none;
+    border: 1px solid black;
+    background-color: transparent;
+  }
+
+  .btn-container p{
+    margin: 0;
+  }
+
+  @media screen and (min-width: 768px) {
+    .why-choose-us{
+      background-color: rgba(244, 244, 244, 1);
+    }
+
+    .title-section{
+      max-width: 800px;
+      margin: auto;
+      padding: 50px 0;
+    }
+
+    .main-content{
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .doctor-img{
+      display: flex;
+      border-radius: 50%;
+      width: 540px;
+      margin: 0 50px;
+    }
+
+    .doctor-img img{
+      width: 100%;
+      border-radius: 50%;
+    }
+
+    .info{
+      margin: 0;
+    }
+  }
+
+</style>
