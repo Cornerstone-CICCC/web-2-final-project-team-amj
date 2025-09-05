@@ -2,6 +2,7 @@
 import "../styles/global.css";
 const { title } = Astro.props;
 import Review from "../components/Review.astro";
+import Newsletter from "../components/Newsletter.astro";
 import Doctors from "../components/Doctors.astro";
 import Footer from "../components/Footer.astro";
 ---
@@ -22,6 +23,7 @@ import Footer from "../components/Footer.astro";
       <main>
         <slot />
         <Review />
+        <Newsletter />
         <Doctors />
       </main>
       <Footer />

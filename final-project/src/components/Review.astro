@@ -1,8 +1,5 @@
 ---
 import reviewImg from "../assets/images/reviewImage.png"
-
-import { getCollection } from "astro:content";
-const reviews = await getCollection("reviews");
 ---
 
 <div class="container">
@@ -35,74 +32,84 @@ const reviews = await getCollection("reviews");
 
 
 <style>
+
   .container {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    margin: 7rem 4rem;
+    display: none;
   }
+  
 
-  .sidebtn_left button {
-    width: 3rem;
-    height: 3rem;
-    font-size: 2rem;
-    padding: 0.75rem auto;
-    border-radius: 50%;
-    background-color: white;
-  }
+  @media screen and (min-width: 768px) {
 
-  .review {
-    width: 48rem;
-    height: 15.056rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: 0;
-  }
+    .container {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      margin: 7rem 4rem;
+    }
 
-  .star {
-    width: 7.25rem;
-    height: 1.181rem;
-    font-size: 1.181rem;
-    padding-bottom: 2rem;
-  }
+    .sidebtn_left button {
+      width: 3rem;
+      height: 3rem;
+      font-size: 2rem;
+      padding: 0.75rem auto;
+      border-radius: 50%;
+      background-color: white;
+    }
 
-  .coment {
-    text-align: center;
-    font-size: 1.5rem;
-    font-weight: bold;
-    padding-bottom: 2rem;
-    margin: 0;
-  }
+    .review {
+      width: 48rem;
+      height: 15.056rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin: 0;
+    }
 
-  .reviewer {
-    width: 11.438rem;
-    height: 3.5rem;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-  }
+    .star {
+      width: 7.25rem;
+      height: 1.181rem;
+      font-size: 1.181rem;
+      padding-bottom: 2rem;
+    }
 
-  .reviewer img {
-    width: 3.5rem;
-    height: 3.5rem;
-    padding-right: 1rem;
-  }
+    .coment {
+      text-align: center;
+      font-size: 1.5rem;
+      font-weight: bold;
+      padding-bottom: 2rem;
+      margin: 0;
+    }
 
-  ..reviewer p {
-    font-size: 1rem;
-  }
+    .reviewer {
+      width: 11.438rem;
+      height: 3.5rem;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      align-items: center;
+    }
 
-  .sidebtn_right button {
-    width: 3rem;
-    height: 3rem;
-    font-size: 2rem;
-    padding: 0.75rem auto;
-    border-radius: 50%;
-    background-color: white;
+    .reviewer img {
+      width: 3.5rem;
+      height: 3.5rem;
+      padding-right: 1rem;
+    }
+
+    ..reviewer p {
+      font-size: 1rem;
+    }
+
+    .sidebtn_right button {
+      width: 3rem;
+      height: 3rem;
+      font-size: 2rem;
+      padding: 0.75rem auto;
+      border-radius: 50%;
+      background-color: white;
+    }
+
   }
 
 </style>
