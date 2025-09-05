@@ -1,0 +1,123 @@
+---
+import reviewImg from "../assets/images/reviewImage.png"
+import slider from "../assets/images/SliderDots.png"
+---
+
+<div class="container">
+
+  <div class="sidebtn_left">
+    <button class="prev">&larr;</button>
+  </div>
+
+  <div class="review">
+    <div class="star">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+    <p class="coment">
+      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Velit quidem id expedita mollitia magni, officia ullam praesentium. Consequatur tempore sed earum. Amet rem quam fuga!
+    </p>
+    <div class="reviewer">
+      <img src={reviewImg.src} alt="reviewer">
+      <p class="names">László Barbara</p>
+    </div>
+    <div class="dots">
+      <img src={slider.src} alt="sliderDots">
+    </div>
+  </div>
+
+  <div class="sidebtn_right">      
+    <button class="next">&rarr;</button>
+  </div>
+
+</div>
+
+<style>
+
+  .container {
+    display: none;  
+  }
+
+  @media screen and (min-width: 768px) {
+    
+    .container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        margin: 7rem 4rem;
+      }
+
+      .sidebtn_left button {
+        width: 3rem;
+        height: 3rem;
+        font-size: 2rem;
+        padding: 0.75rem auto;
+        border-radius: 50%;
+        background-color: white;
+      }
+
+      .sidebtn_left button:hover {
+        cursor: pointer;
+      }
+
+      .review {
+        width: 48rem;
+        height: 15.056rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+      }
+
+      .star {
+        width: 7.25rem;
+        height: 1.181rem;
+        font-size: 1.181rem;
+        margin-bottom: 2rem;
+        text-align: center;
+      }
+
+      .coment {
+        text-align: center;
+        font-size: 1.5rem;
+        font-weight: bold;
+        padding-bottom: 2rem;
+        margin: 0;
+      }
+
+      .reviewer {
+        width: 11.438rem;
+        height: 3.5rem;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+      }
+
+      .reviewer img {
+        padding-right: 1rem;
+      }
+
+      .reviewer p {
+        font-size: 1rem;
+      }
+
+      .sidebtn_right button {
+        width: 3rem;
+        height: 3rem;
+        font-size: 2rem;
+        padding: 0.75rem auto;
+        border-radius: 50%;
+        background-color: white;
+      }
+
+      .sidebtn_right button:hover {
+        cursor: pointer;
+      }
+
+      .dots {
+        margin-top: 3rem;
+      }
+
+  }
+
+</style>

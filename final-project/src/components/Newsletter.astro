@@ -1,0 +1,87 @@
+<div class="container">
+  <div class="Subscribe_box">
+    <h2>Subscribe to our newsletter</h2>
+    <p class="Subscribe">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.</p>
+    <div class="signIn">
+      <div class="sign">
+        <input type="email" placeholder="Enter your email">
+        <button>Sign In</button>
+      </div>
+      <p class="clicking">By clicking Sign Up you're confirming that you agree with our Terms and Conditions.</p>
+    </div>
+  </div>
+</div>
+
+<style>
+  .container {
+    display: none;
+  }
+
+  @media screen and (min-width: 768px) {
+
+    .container {
+      display: inline-block;
+      background-color: #F4F4F4;
+    }
+
+    .Subscribe_box {
+      margin: 7rem 21rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .Subscribe_box h2 {
+      font-size: 3rem;
+      font-weight: bold;
+      padding-bottom: 1.5rem;
+      margin: 0;
+    }
+
+    .Subscribe_box > p {
+      font-size: 1.125rem;
+      text-align: center;
+      margin: 0;
+      padding-bottom: 1.5rem;
+    }
+
+    .signIn {
+      width: 32.063rem;
+      height: 3rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    .sign {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    input {
+      border-radius: .5rem;
+      padding: .5rem;
+      font-size: 1rem;
+    }
+
+    button {
+      background-color: #000;
+      color: white;
+      border-radius: .5rem;
+      padding: .5rem;
+      font-size: 1rem;
+    }
+
+    .signIn > p {
+      font-size: .75rem;
+      text-align: center;
+    }
+    
+  }
+</style>
