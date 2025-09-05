@@ -13,3 +13,9 @@ img{
     width: auto;
     max-width: 100%;
 }
+
+div .err-text {
+    color: red;
+    font-size: 13px;
+    font-weight: bold;
+  }

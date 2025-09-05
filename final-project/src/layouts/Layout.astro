@@ -5,6 +5,8 @@ import Review from "../components/Review.astro";
 import Newsletter from "../components/Newsletter.astro";
 import Doctors from "../components/Doctors.astro";
 import Footer from "../components/Footer.astro";
+
+import Header from "../components/Header.astro";
 ---
 
 <!doctype html>
@@ -16,10 +18,11 @@ import Footer from "../components/Footer.astro";
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   </head>
   <body>
     <div class="container">
-      <!-- <Header /> -->
+      <Header />
       <main>
         <slot />
         <Review />
@@ -28,6 +31,9 @@ import Footer from "../components/Footer.astro";
       </main>
       <Footer />
     </div>
+
+    <script src="../burgerMenu.js"></script>
+    <script src="../js/view.js"></script>
   </body>
 </html>
 
