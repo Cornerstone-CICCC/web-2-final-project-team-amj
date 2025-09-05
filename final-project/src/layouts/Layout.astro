@@ -1,6 +1,7 @@
 ---
 import "../styles/global.css";
 const { title } = Astro.props;
+import Review from "../components/Review.astro";
 import Doctors from "../components/Doctors.astro";
 import Footer from "../components/Footer.astro";
 ---
@@ -20,9 +21,10 @@ import Footer from "../components/Footer.astro";
       <!-- <Header /> -->
       <main>
         <slot />
+        <Review />
         <Doctors />
       </main>
-      <!-- <Footer /> -->
+      <Footer />
     </div>
   </body>
 </html>
