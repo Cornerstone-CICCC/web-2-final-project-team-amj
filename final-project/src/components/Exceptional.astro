@@ -1,0 +1,80 @@
+<div class="exceptional-part">
+  <div style="font-weight: 400; font-size: 18px;">Welcome to Ddsgnr clinic!</div>
+
+  <div class="main-title" >Exceptional Medical Specialty Healthcare</div>
+
+  <div class="info" style="font-weight: 400; font-size: 18px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat.</div>
+
+  <div class="btn-container">
+    <button class="btn-book">Book an Appointment</button>
+    <button class="btn-signin">Sign in</button>
+  </div>
+</div>
+
+
+<style>
+  .exceptional-part{
+    background-image:linear-gradient(rgba(209, 44, 66, 0.3) , rgba(209, 44, 66, 0.25) ),  url('/public/exceptional-bg-img.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 30px;
+    gap: 2rem;
+
+    color: rgba(255, 255, 255, 1);
+
+  }
+
+  .main-title{
+    font-weight: 700;
+    font-size: 40px;
+  }
+
+  
+
+  .btn-container{
+    display: flex;
+    gap: 1rem;
+  }
+
+  button{
+    color: rgba(255, 255, 255, 1);
+    font-weight: 400;
+    font-size: 16px;
+    border-radius: 5px;
+    padding: 0.8rem 1.2rem;
+  }
+
+  .btn-book{
+    background-color: black;
+    border: none;
+  }
+
+  .btn-signin{
+    background-color: transparent;
+    border: none;
+    border: 1px solid white;
+  }
+
+
+  @media screen and (min-width: 768px) {
+    .info{
+      max-width: 50%
+    }
+
+    .main-title{
+      max-width: 50%;
+      font-size: 56px;
+      font-weight: 700;
+    }
+
+    .exceptional-part{
+      padding: 0 50px;
+    }
+  }
+
+</style>
